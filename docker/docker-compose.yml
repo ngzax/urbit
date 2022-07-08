@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+  urbit:
+    build:
+      context: .
+    env_file:   ${UENV}
+    hostname:   ${HOST}
+    stdin_open: true
+    tty:        true
+    volumes:
+      - ${SLOC}:${SCON}

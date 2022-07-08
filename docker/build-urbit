@@ -1,0 +1,8 @@
+#!/bin/sh
+cd /usr/local/src/urbit/pkg/urbit
+
+nix-shell --run ./configure
+nix-shell --run "make -j 8"
+nix-shell --run "make test"
+
+exit 0
