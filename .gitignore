@@ -29,7 +29,7 @@ result-*
 /zod
 /bus
 /nec
-/fakezod
+**/fakezod
 
 # NodeJS
 node_modules
