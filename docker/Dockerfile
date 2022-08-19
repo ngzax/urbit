@@ -2,7 +2,7 @@ FROM debian:stable
 
 USER root
 
-RUN apt-get update && apt-get install -y curl vim xz-utils
+RUN apt-get update && apt-get install -y curl procps vim xz-utils
 
 RUN set -xe; \
   groupadd -f urbit && \
