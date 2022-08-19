@@ -1,8 +1,34 @@
 #!/bin/sh
 cd /usr/local/src/urbit/pkg/urbit
 
-nix-shell --run ./configure
+DEBUG=0
+TEST=0
+
+while getopts :td option
+do
+  case "$option" in
+  d)
+    DEBUG=1
+    ;;
+  t)
+    TEST=1
+    ;;
+  esac
+done
+
+if [ 1 -eq $DEBUG ]
+then
+  nix-shell --run "MEMORY_DEBUG=1 ./configure"
+else
+  nix-shell --run ./configure
+fi
+
 nix-shell --run "make -j 8"
-nix-shell --run "make test"
+
+if [ 1 -eq $TEST ]
+then
+  nix-shell --run "make test"
+  exit
+fi
 
 exit 0
